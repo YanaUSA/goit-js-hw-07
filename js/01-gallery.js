@@ -3,9 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryRef = document.querySelector('.gallery');
 
-
-// galleryRef.addEventListener("click", );
-
 const createGalleryMarkup = galleryItems.map((item) =>
     `<div class="gallery__item">
     <a class="gallery__link" href="${item.original}">
@@ -28,24 +25,36 @@ galleryLinkRef.forEach(function (item) {
     });
 });
 
-import * as basicLightbox from 'basiclightbox'
+const galleryItemRef = document.querySelector('.gallery__item')
 
-const instance = basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600">
-`)
+// galleryRef.addEventListener("click", (event) => {
+//     const instance = basicLightbox.create(`
+//     <img src=${event.target.dataset.source}>`
+//     )
+//     instance.show()
 
-instance.show()
-
-
-
-// galleryLinkRef.addEventListener("click", (event) => {
-//     event.preventDefault();
+//     document.addEventListener("keydown", (event) => {
+//         if (event.code === 'Escape') {
+//             instance.close()            
+//         }
+        
+//         console.log(event)
+        
+//     });
 // });
 
-// console.log(galleryLinkSpread);
+galleryRef.addEventListener("click", (event) => {
+    const instance = basicLightbox.create(`
+    <img src=${event.target.dataset.source}>`
+    )
+    instance.show()
 
-
-// console.log(htmlString);
-// console.log(createGalleryMarkup);
-
-// console.log(galleryItems);
+    window.addEventListener("keydown", onEscapePress);
+        
+    function onEscapePress(event) {
+        if (event.code === 'Escape') {
+            instance.close()
+            window.removeEventListener("keydown", onEscapePress)
+        }
+    }
+});
