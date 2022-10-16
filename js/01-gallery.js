@@ -27,22 +27,6 @@ galleryLinkRef.forEach(function (item) {
 
 const galleryItemRef = document.querySelector('.gallery__item')
 
-// galleryRef.addEventListener("click", (event) => {
-//     const instance = basicLightbox.create(`
-//     <img src=${event.target.dataset.source}>`
-//     )
-//     instance.show()
-
-//     document.addEventListener("keydown", (event) => {
-//         if (event.code === 'Escape') {
-//             instance.close()            
-//         }
-        
-//         console.log(event)
-        
-//     });
-// });
-
 galleryRef.addEventListener("click", (event) => {
     const instance = basicLightbox.create(`
     <img src=${event.target.dataset.source}>`
