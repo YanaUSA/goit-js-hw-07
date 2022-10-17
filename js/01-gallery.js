@@ -28,9 +28,13 @@ galleryLinkRef.forEach(function (item) {
 const galleryItemRef = document.querySelector('.gallery__item')
 
 galleryRef.addEventListener("click", (event) => {
+    if (event.target.nodeName !== "IMG")
+        return;
+
     const instance = basicLightbox.create(`
     <img src=${event.target.dataset.source}>`
     )
+    
     instance.show()
 
     window.addEventListener("keydown", onEscapePress);
@@ -39,6 +43,8 @@ galleryRef.addEventListener("click", (event) => {
         if (event.code === 'Escape') {
             instance.close()
             window.removeEventListener("keydown", onEscapePress)
+
+            console.log(onEscapePress)
         }
     }
 });

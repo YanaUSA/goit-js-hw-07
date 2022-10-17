@@ -4,14 +4,15 @@ import { galleryItems } from './gallery-items.js';
 const galleryRef = document.querySelector('.gallery');
 
 const createGalleryMarkup = galleryItems.map(({original, preview, description}) =>
-    `<a class="gallery__item" href="${original}">
-        <img
-        class="gallery__image"
-        src="${preview}"
-        alt="${description}"
-        />
-    </a>
-    </div>`).join("");
+    `<li>
+        <a class="gallery__item" href="${original}">
+            <img
+            class="gallery__image"
+            src="${preview}"
+            alt="${description}"
+            />
+        </a>
+    </li>`).join("");
 
 galleryRef.innerHTML = createGalleryMarkup;
 
