@@ -28,8 +28,9 @@ galleryLinkRef.forEach(function (item) {
 const galleryItemRef = document.querySelector('.gallery__item')
 
 galleryRef.addEventListener("click", (event) => {
-    if (event.target.nodeName !== "IMG")
+    if (event.target.nodeName !== "IMG") {
         return;
+    }
 
     const instance = basicLightbox.create(`
     <img src=${event.target.dataset.source}>`
